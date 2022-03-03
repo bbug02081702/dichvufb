@@ -1,0 +1,52 @@
+RewriteEngine on
+RewriteCond %{HTTPS} !=on [NC]
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+#==========================================
+#Vô hiệu hóa
+RewriteRule ^disable.html$ core/notications/disable.php
+ErrorDocument 404 /core/notications/404.php
+ErrorDocument 403 /core/notications/403.php
+ErrorDocument 500 /core/notications/500.php
+RewriteRule ^repassword$ core/repassword/index.php [L]
+RewriteRule ^xac-nhan-tai-khoan$ confirm-account.php [L]
+#Trang chủ hệ thống
+RewriteRule ^trang-chu$ index.php [L] 
+RewriteRule ^dang-nhap$ log/dang-nhap-he-thong.php [L]
+RewriteRule ^dang-ky$ log/dang-ky-he-thong.php [L]
+RewriteRule ^dang-xuat$ log/dang-xuat.php [L]
+#----------- ORDER --------------------
+RewriteRule ^tao-dich-vu$ index.php?Order=tao-dich-vu [L]
+RewriteRule ^quan-li$ index.php?Order=quan-li [L]
+RewriteRule ^order$ /core/order/ajax.php [L]
+RewriteRule ^orders$ core/order/ajax-api.php [L]
+RewriteRule ^list$ core/order/table-api.php [L]
+RewriteRule ^list/([A-Za-z0-9-]+)$ core/order/table-api.php?token=$1 [L]
+
+RewriteRule ^order/([A-Za-z0-9-]+) /core/order/index.php?select=$1 [L]
+RewriteRule ^hop-thu-ho-tro$ index.php?Home=ticket [L]
+RewriteRule ^nhat-ky-hoat-dong$ index.php?Order=nhat-ky [L]
+#------ Bang gia ----------
+RewriteRule ^bang-gia-dich-vu$ index.php?Home=bang-gia [L]
+#--------- INFO -----------------------
+RewriteRule ^thay-doi-thong-tin$ index.php?Info=thay-doi-thong-tin [L]
+RewriteRule ^thay-doi-mat-khau$ index.php?Info=thay-doi-mat-khau [L]
+#----------- MOMO - RÚT TIỀN - NẠP THẺ ------------
+#Thesieure
+RewriteRule ^thesieure$ index.php?Bank=thesieure [L]    
+#Vcb
+RewriteRule ^bank$ index.php?Bank=bank [L]    
+#Momo
+RewriteRule ^mo-mo$ index.php?Bank=mo-mo [L]
+#Rút tiền
+RewriteRule ^rut-tien$ index.php?Bank=rut-tien [L]
+#Chuyển tiền
+RewriteRule ^chuyen-tien$ index.php?Bank=chuyen-tien [L]
+#Nạp thẻ chậm
+RewriteRule ^nap-the$ index.php?Bank=nap-the [L]
+#Nạp thẻ chậm
+RewriteRule ^nap-the-auto$ index.php?Bank=nap-the-auto [L]
+RewriteRule ^tao-thong-bao$ index.php?Admin=tao-thong-bao [L]
+#Quản lí thành viên
+RewriteRule ^quan-li-thanh-vien$ index.php?Admin=quan-li-thanh-vien [L]
+#Cài đặt giao diện
+RewriteRule ^cai-dat-giao-dien$ index.php?Admin=cai-dat-giao-dien [L]

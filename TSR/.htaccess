@@ -1,0 +1,2 @@
+RewriteEngine on
+RewriteRule ^index.php?code=1$ index.php
